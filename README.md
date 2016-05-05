@@ -1,39 +1,44 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Installs Math Kernel library along with the minimum GCC version required on RedHat/Centos 6 machines.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+You must use ansible 2.0.0 and have a RedHat/Centos 6 computer
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+MKL_PACKAGE_PATH: the path will be default to a url but if you wish you can provide your own package.
+GCC_PACKAGE_PATH: the path will be default to a url but if you wish you can provide your own package.
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+If you wish to provide your own GCC and MKL package 
+too:
 
     - hosts: servers
+      become: yes
+      become_user: root
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: install-mkl, MKL_PACKAGE_PATH: '{{mkl_package}}', GCC_PACKAGE_PATH: '{{gcc_package}}'  }
+         
+Not providing GCC and MKL will also work 
+too:
+
+    - hosts: servers
+      become: yes
+      become_user: root
+      roles:
+         - { role: install-mkl, MKL_PACKAGE_PATH: '{{mkl_package}}', GCC_PACKAGE_PATH: '{{gcc_package}}'  }
 
 License
 -------
+Outgoing licenses
+GCC - GPL 
+MKL - 
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
-# mkl-install
