@@ -1,0 +1,17 @@
+---
+# tasks file for install-mkl
+
+
+# tasks file for tap-prepare
+- name: Include copy
+  include: copy.yml
+  
+- name: Include ldconf
+  include: ldconf.yml
+  
+- name: Include alternatives
+  include: alternatives.yml
+  
+- name: Include libgfortran
+  include: libgfortran.yml
+

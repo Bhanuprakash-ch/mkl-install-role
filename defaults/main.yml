@@ -1,0 +1,4 @@
+---
+# defaults file for install-mkl
+MKL_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.1.0/mkl.tar.gz"
+GCC_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.1.0/gcc-4.8.5-min.tar.gz"

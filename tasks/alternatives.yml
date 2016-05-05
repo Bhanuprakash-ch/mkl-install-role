@@ -1,0 +1,5 @@
+---
+- name: Add alternatives
+  shell: "update-alternatives --install {{item.system_path}} {{item.name}} {{item.alt_path}} {{item.priority}}"
+  with_items: '{{ALTERNATIVES}}'
+  

@@ -1,0 +1,12 @@
+---
+- name: Copy mkl.conf
+  copy:
+    src: ../files/mkl.conf
+    dest: /etc/ld.so.conf.d/mkl.conf
+    mode: 0644
+  
+- name: Copy ld_path profile script
+  copy:
+    src: ../files/ld_path.sh
+    dest: /etc/profile.d/ld_path.sh
+    mode: 0644

@@ -1,0 +1,22 @@
+---
+
+- name: find libgfortran
+  find:
+    paths: /usr/lib64/
+    file_type: file
+    pattern: libgfortran.so.3.0.0
+  register: libgfortran
+
+- debug: msg="{{libgfortran}}"
+
+#- name: backup libgfortran
+#  copy:
+#    src: /usr/lib64/libgfortran.so.3.0.0
+#    dest: /usr/lib64/libgfortran.so.3.0.0
+#  with_items: '{{}}'
+
+- name: symlink lgfortran
+  file:
+    state: link
+    src: /usr/local/gcc-4.8.5/lib64/libgfortran.so.3.0.0
+    path: /usr/lib64/libgfortran.so.3.0.0
