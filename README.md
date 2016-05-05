@@ -38,7 +38,9 @@ too:
 
 License
 -------
-Outgoing licenses
-GCC - GPL 
-MKL - 
+Outbound licenses
+- GCC - https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gcc/Copying.html#Copying 
+- MKL - https://software.intel.com/sites/default/files/managed/67/99/Master_EULA_for_Intel_Sw_Development_Products_March_2016.pdf 
+
+
 
