@@ -7,13 +7,6 @@
     pattern: libgfortran.so.3.0.0
   register: libgfortran
 
-- debug: msg="{{libgfortran}}"
-
-#- name: backup libgfortran
-#  copy:
-#    src: /usr/lib64/libgfortran.so.3.0.0
-#    dest: /usr/lib64/libgfortran.so.3.0.0
-#  with_items: '{{}}'
 
 - name: symlink lgfortran
   file:

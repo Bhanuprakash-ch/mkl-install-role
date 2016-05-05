@@ -7,8 +7,6 @@
     pattern: libgfortran.so.3.0.0
   register: libgfortran
 
-- debug: msg="{{libgfortran}}"
-
 - name: backup libgfortran
   shell: "mv {{item.path}} {{item.path}}_back "
   with_items: '{{libgfortran.files}}'
