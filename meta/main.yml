@@ -8,3 +8,4 @@ galaxy_info:
     versions:
       - 6
   galaxy_tags: [ "mkl" ]
+dependencies: []
