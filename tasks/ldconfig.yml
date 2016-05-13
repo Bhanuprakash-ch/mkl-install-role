@@ -1,0 +1,7 @@
+---
+- name: Print ldconfig message
+  debug: 
+    msg: "Command ldconfig needs to run each time there is a kernel update"
+
+- name: Run ldconfig command
+  command: ldconfig
