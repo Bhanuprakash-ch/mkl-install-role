@@ -15,3 +15,5 @@
 - name: Include libgfortran
   include: libgfortran.yml
 
+- name: Include ldconfig
+  include: ldconfig.yml
