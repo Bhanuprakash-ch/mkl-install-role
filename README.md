@@ -6,14 +6,12 @@ Installs Math Kernel library along with the minimum GCC(4.8.5) version required 
 Requirements
 ------------
 
-You must use ansible 2.0.0 and have a RedHat/Centos 6 computer
-
-Role Variables
---------------
-
-MKL_PACKAGE_PATH: the path will be default to a url but if you wish you can provide your own MKL package.
-GCC_PACKAGE_PATH: the path will be default to a url but if you wish you can provide your own GCC package.
-
+You must use ansible 1.9.0.1 and have a RedHat/Centos 6 computer
+CDH 5.5.x cluster
+You need to add the following values to YARN's "NodeManager Environment Advanced Configuration Snippet (Safety Valve)" in CDH.
+LD_LIBRARY_PATH=/usr/local/gcc-4.8.5/lib64/:/opt/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
+LD_RUN_PATH=/usr/local/gcc-4.8.5/lib64/:/opt/intel/mkl/lib/intel64:$LD_RUN_PATH
+	
 
 Example Playbook
 ----------------

@@ -13,21 +13,31 @@
 #  limitations under the License.
 
 ---
-# tasks file for install-mkl
+- name: create bin dir for MKL_DEPENDENCIES
+  file:
+    path: "{{ item.dest }}"
+    mode: 0744
+    state: directory
+  with_items: "{{ MKL_DEPENDENCIES }}"
 
+- name: create tmp dir for MKL_DEPENDENCIES
+  file:
+    path: "{{ item.tmp }}"
+    mode: 0744
+    state: directory
+  with_items: "{{ MKL_DEPENDENCIES }}"
 
-# tasks file for tap-prepare
-- name: Include copy
-  include: copy.yml
+- name: download mkl dependencies from MKL_DEPENDENCIES
+  get_url:
+    url: "{{ item.src }}"
+    dest: "{{ item.tmp }}/{{ item.name }}" 
+    mode: 0644
+  with_items: "{{ MKL_DEPENDENCIES }}"
   
-- name: Include ldconf
-  include: ldconf.yml
-  
-- name: Include alternatives
-  include: alternatives.yml
-  
-- name: Include libgfortran
-  include: libgfortran.yml
-
-- name: Include ldconfig
-  include: ldconfig.yml
+- name: unarchive mkl dependencies
+  unarchive:
+    src: "{{ item.tmp }}/{{ item.name }}"
+    dest: "{{ item.dest }}"
+    creates: "{{ item.dest }}"
+    copy: no
+  with_items: "{{ MKL_DEPENDENCIES }}"
