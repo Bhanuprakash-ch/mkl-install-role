@@ -13,31 +13,59 @@
 #  limitations under the License.
 
 ---
-- name: create bin dir for MKL_DEPENDENCIES
+- name: create bin dir
   file:
     path: "{{ item.dest }}"
-    mode: 0744
+    mode: 0755
+    owner: root
+    group: root
     state: directory
   with_items: "{{ MKL_DEPENDENCIES }}"
 
-- name: create tmp dir for MKL_DEPENDENCIES
+- name: create tmp dir
   file:
     path: "{{ item.tmp }}"
-    mode: 0744
+    mode: 0755
     state: directory
   with_items: "{{ MKL_DEPENDENCIES }}"
 
-- name: download mkl dependencies from MKL_DEPENDENCIES
+- name: download mkl dependencies
   get_url:
     url: "{{ item.src }}"
     dest: "{{ item.tmp }}/{{ item.name }}" 
-    mode: 0644
+    mode: 0755
   with_items: "{{ MKL_DEPENDENCIES }}"
-  
-- name: unarchive mkl dependencies
+
+- name: expand mkl dependencies
   unarchive:
     src: "{{ item.tmp }}/{{ item.name }}"
     dest: "{{ item.dest }}"
-    creates: "{{ item.dest }}"
     copy: no
+    creates: "{{ item.dest }}"
+    mode: 0755
+    group: root
+    owner: root
   with_items: "{{ MKL_DEPENDENCIES }}"
+
+- name: Copy mkl.conf to /etc/ld.so.conf.d
+  copy:
+    src: mkl.conf
+    dest: /etc/ld.so.conf.d/mkl.conf
+    mode: 0755
+  
+- name: Copy ld_path.sh to /etc/profile.d/
+  copy:
+    src: ld_path.sh
+    dest: /etc/profile.d/ld_path.sh
+    mode: 0755
+
+- name: Add alternatives
+  shell: "update-alternatives --install {{ item.system_path }} {{ item.name }} {{ item.alt_path }} {{ item.priority }}"
+  with_items: "{{ ALTERNATIVES }}"
+
+- name: symlink lgfortran
+  file:
+    state: link
+    src: /usr/local/gcc-4.8.5/lib64/libgfortran.so.3.0.0
+    path: /usr/lib64/libgfortran.so.3.0.0
+    force: yes

@@ -12,18 +12,5 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
----
-
-- name: find libgfortran
-  find:
-    paths: /usr/lib64/
-    file_type: file
-    pattern: libgfortran.so.3.0.0
-  register: libgfortran
-
-
-- name: symlink lgfortran
-  file:
-    state: link
-    src: /usr/local/gcc-4.8.5/lib64/libgfortran.so.3.0.0
-    path: /usr/lib64/libgfortran.so.3.0.0
+export LD_LIBRARY_PATH=/usr/local/gcc-4.8.5/lib64/:/opt/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
+export LD_RUN_PATH=/usr/local/gcc-4.8.5/lib64/:/opt/intel/mkl/lib/intel64:$LD_RUN_PATH
