@@ -41,7 +41,6 @@
     src: "{{ item.tmp }}/{{ item.name }}"
     dest: "{{ item.dest }}"
     copy: no
-    creates: "{{ item.dest }}"
     mode: 0755
     group: root
     owner: root
