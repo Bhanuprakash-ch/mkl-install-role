@@ -18,7 +18,7 @@ GCC_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/re
 
 MKL_DEPENDENCIES:
   - { src: "{{ MKL_PACKAGE_PATH }}", dest: "/opt/intel", tmp: "/tmp/mkl", name: "mkl_2016.2.181", copy: yes}
-  - { src: "{{ GCC_PACKAGE_PATH }}", dest: "/usr/local/gcc-4.8.5", tmp: "/tmp/gcc", name: "gcc_4.8.5", copy: yes }
+  - { src: "{{ GCC_PACKAGE_PATH }}", dest: "/usr/local", tmp: "/tmp/gcc", name: "gcc-4.8.5", copy: yes }
   
 
 ALTERNATIVES:
