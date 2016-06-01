@@ -62,9 +62,13 @@
   shell: "update-alternatives --install {{ item.system_path }} {{ item.name }} {{ item.alt_path }} {{ item.priority }}"
   with_items: "{{ ALTERNATIVES }}"
 
-- name: symlink lgfortran
+- name: add symlinks
   file:
-    state: link
-    src: /usr/local/gcc-4.8.5/lib64/libgfortran.so.3.0.0
-    path: /usr/lib64/libgfortran.so.3.0.0
+    state: "{{ item.state }}"
+    src: "{{ item.src }}"
+    path: "{{ item.path }}"
     force: yes
+  with_items: "{{ LINKS }}"
+
+
+

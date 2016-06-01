@@ -16,7 +16,7 @@ galaxy_info:
   author: Trusted Analytics
   description: Install MKL and required GCC version.
   license: Outbound Licenses GPL and https://software.intel.com/sites/default/files/managed/67/99/Master_EULA_for_Intel_Sw_Development_Products_March_2016.pdf
-  min_ansible_version: 1.9.0.1
+  min_ansible_version: 1.9.4
   platforms:
   - name: EL
     versions:

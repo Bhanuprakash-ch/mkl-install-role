@@ -19,11 +19,16 @@ GCC_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/re
 MKL_DEPENDENCIES:
   - { src: "{{ MKL_PACKAGE_PATH }}", dest: "/opt/intel", tmp: "/tmp/mkl", name: "mkl_2016.2.181", copy: yes}
   - { src: "{{ GCC_PACKAGE_PATH }}", dest: "/usr/local", tmp: "/tmp/gcc", name: "gcc-4.8.5", copy: yes }
-  
 
 ALTERNATIVES:
   - { name: libblas.so, system_path: /usr/lib64/libblas.so, alt_path: /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64_lin/libmkl_rt.so, priority: 1 }
   - { name: libblas.so.3, system_path: /usr/lib64/libblas.so.3, alt_path: /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64_lin/libmkl_rt.so, priority: 1 }
   - { name: liblapack.so, system_path: /usr/lib64/liblapack.so, alt_path: /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64_lin/libmkl_rt.so, priority: 1 }
   - { name: liblapack.so.3, system_path: /usr/lib64/liblapack.so.3, alt_path: /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64_lin/libmkl_rt.so, priority: 1 }
+  - { name: libquadmath.so.0, system_path: /usr/lib64/libquadmath.so.0, alt_path: /usr/local/gcc-4.8.5/lib64/libquadmath.so.0, priority: 1 }
+  - { name: libblas.so, system_path: /usr/lib64/libblas.so, alt_path: /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64_lin/libmkl_rt.so, priority: 1 }
+  
+
+LINKS:
+  - { state: link, name: libblas.so.3, path: /usr/lib64/libgfortran.so.3.0.0, src: /usr/local/gcc-4.8.5/lib64/libgfortran.so.3.0.0 }
 
