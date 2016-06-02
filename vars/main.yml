@@ -13,8 +13,8 @@
 #  limitations under the License.
 
 ---
-MKL_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.1.0/mkl.tar.gz"
-GCC_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.1.0/gcc-4.8.5-min.tar.gz"
+MKL_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.7.0/mkl.tar.gz"
+GCC_PACKAGE_PATH: "https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.7.0/gcc-4.8.5-min.tar.gz"
 
 MKL_DEPENDENCIES:
   - { src: "{{ MKL_PACKAGE_PATH }}", dest: "/opt/intel", tmp: "/tmp/mkl", name: "mkl_2016.2.181", copy: yes}

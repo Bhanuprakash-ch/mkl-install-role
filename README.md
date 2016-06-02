@@ -38,7 +38,7 @@ License
 -------
 Outbound licenses
 - GCC - https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gcc/Copying.html#Copying 
-  - [GCC source](https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.1.0/gcc-4.8.5.tar.gz)
+  - [GCC source](https://s3.amazonaws.com/trustedanalytics/mkl-install-role/release/v0.7.0/gcc-4.8.5.tar.gz)
 - MKL - https://software.intel.com/sites/default/files/managed/67/99/Master_EULA_for_Intel_Sw_Development_Products_March_2016.pdf 
 
 
